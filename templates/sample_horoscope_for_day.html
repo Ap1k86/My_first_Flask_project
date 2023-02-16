@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Подключил Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous">
+    </script>
+    <link type='text/css' href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <style>
+        .custom {
+            height: 60px !important;
+        }
+
+        body {
+            background: #000 url({{ url_for('static', filename='111.jpeg') }});
+		    color: white;
+		    background-text; yellow;
+		    background-size: 100%;
+		    display: flex;
+            flex-direction: column;
+	    }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1 0 auto;
+
+            padding: 1rem;/*это свойство можно удалить, добавлено для наглядности*/
+            background: #e6f2ff;/*это свойство можно удалить, добавлено для наглядности*/
+        }
+
+        footer {
+            flex: 0 0 auto;
+        }
+
+
+
+    </style>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<!--Блок в верхней части страницы сайта-->
+<header>
+    <div class="bg-dark collapse" id="navbarHeader" style="">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <h4 class="text-white"><font style="vertical-align: inherit;">☄<font
+                            style="vertical-align: inherit;">Гороскоп.</font></font></h4>
+                    <p class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                        Гороскоп - это упорядоченное отображение взаимного расположения планет на звёздном небе
+                        в определенный промежуток времени по знакам зодиака.
+                        <br>
+                    </font><font style="vertical-align: inherit;">Используется в астрологии
+                        с целью предсказания судьбы.
+                        <br>
+                    </font><font style="vertical-align: inherit;">С точки зрения науки, гороскоп — псевдонаучное
+                        предсказание.
+                    </font></font></p>
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <h4 class="text-white"><font style="vertical-align: inherit;"><font
+                            style="vertical-align: inherit;">Путеводитель:</font></font></h4>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-white"><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">Гороскоп</font></font></a>
+                        </li>
+                        <li><a href="/horoscope_for_sing" class="text-white"><font
+                                style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">Гороскоп для знаков зодиака</font></font></a>
+                        </li>
+                        <li><a href="/forum" class="text-white"><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">Форум</font></font></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
+                     viewBox="0 0 24 24">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+                <strong><font style="vertical-align: inherit;"><font
+                        style="vertical-align: inherit;">Гороскоп.</font></font></strong>
+            </a>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
+                    aria-label="Переключить навигацию">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6 custom">
+            {% block days %}
+
+            {% endblock %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12"><br><br></div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <p><a href="/yesterday" class="link-warning">Вчера</a></p>
+            <p><a href="/" class="link-warning active">Сегодня</a></p>
+            <p><a href="/tomorrow" class="link-warning">Завтра</a></p>
+            <p><a href="/week" class="link-warning">Неделя</a></p>
+            <p><a href="/month" class="link-warning">Месяц</a></p>
+            <p><a href="/year" class="link-warning">Год</a></p>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-8">
+            <div class="fs-5">
+                {% block horoscope %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12"><br><br></div>
+    </div>
+</div>
+<br>
+<br>
+<!--Блок в нижней части страницы.-->
+<div class="footer" id="footer">
+    <footer class="container">
+        <p class="float-end"><a href="#"><font style="vertical-align: inherit;">☝<font style="vertical-align: inherit;">Вернуться
+            к вершине</font></font></a></p>
+        <p></font><a href="/horoscope_for_sing" alt="Main page"><font style="vertical-align: inherit;">☸<font
+                style="vertical-align: inherit;">Гороскоп для знаков зодиака.</font></font></a><font
+                style="vertical-align: inherit;"><font
+                style="vertical-align: inherit;"> * </font></font><a href="/forum"><font
+                style="vertical-align: inherit;">☯<font
+                style="vertical-align: inherit;">Форум</font></font></a></p>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+.flash {
+    padding: 10px;
+}
+.flash.success {
+    border: 1px solid #21DB56;
+    background: #AEffC5;
+}
+
+.flash.error {
+    border: 1px solid #FF4343;
+    background: #ff9C9C;
+}
+#footer {
+    position: fixed; /* Фиксированное положение */
+    left: 0; bottom: 0; /* Левый нижний угол */
+    padding: 10px; /* Поля вокруг текста */
+    #background: #black; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    width: 100%; /* Ширина слоя */
+   }
